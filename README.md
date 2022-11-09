@@ -141,16 +141,7 @@ Model Performance
 After executing multiple model upgrades by pruning and boosting, the model with the best accuracy and sensitivity among all the models so far was created by boosting the model with 100 trails. Furthermore, it predicted a high rate of delivery on time.
 
 
-
-
-
-
-
-
-
-
-
-6.1.5. Random Forest
+Random Forest
 
 Model
 set.seed(12345)
@@ -158,63 +149,35 @@ rf <- randomForest(Arrival ~ ., data = trn, nodesize = 4, cutoff = c(.9,.1))
 
 Model Performance
  
+![image](https://user-images.githubusercontent.com/95150377/200868517-0d991914-5a43-4fe0-bdfe-2c94e2a4a874.png) ![image](https://user-images.githubusercontent.com/95150377/200868579-bdd47544-0521-49ad-a88f-8b0b895ecf5e.png)
 
-
-
-
-
-
-
-
-Box 10: The cross table and confusion matrix and statistics of the best Random Forest model
 The first 2 models predicted high levels of deliver times not being met which defeats the purpose but after carrying out a third model there was a significant improvement revealing high True Positives which indicates most deliveries were made on time.
 
 
 
+Model Evaluation 
 
+This chapter describes the performance of each model following its evaluation on test data using the chosen algorithms. Given the predicted outcome and actual outcome from each model, the performance of the models can be generated, and the results can be compared.
 
+Evaluation and comparison of the machine learning models
+![image](https://user-images.githubusercontent.com/95150377/200869159-cc894ab8-8cc2-42a1-9d86-c66df4da92a7.png)
 
-
-
-
-CHAPTER 7
-7.1. Model Evaluation 
-This chapter describes the performance of each model following its evaluation on test data using the chosen algorithms. Given the predicted outcome and actual outcome from each model, the performance of the models can be generated, and the results can be compared, as shown in Table 4 and Figures 15–18 below.
-ALGORITHM	ACCURACY	RECALL/SENSITIVITY	PRECISION	F1-SCORE
-K-NN	0.52	0..62	0.58	0.60
-SVM	0.67	0.82	0.55	0.66
-LR	0.56	0.88	0.57	0.69
-Decision Tree	0.69	0.95	0.57	0.71
-Random Forest	0.67	1	0.54	0.70
-Table 5: Evaluation and comparison of the machine learning models
 
 Accuracy
+![image](https://user-images.githubusercontent.com/95150377/200869583-3900b4e2-c825-4142-b8d4-759f9ed3c705.png)
  
-Figure 15:  Comparison of the models based on their Accuracy
-
-
-
-
-
-
 
 Recall
+![image](https://user-images.githubusercontent.com/95150377/200869791-74c27388-bf14-4da0-a397-2673bb8f9d22.png)
  
-Figure 16:  Comparison of the models based on their Recall.
-
-
+ 
 Precision
- 
-Figure 17: Comparison of the models based on their Precision.
-
-
-
-
+![image](https://user-images.githubusercontent.com/95150377/200870024-79a773e8-b102-48c3-a5bd-b43057ce0c25.png)
 
 
 F1-Score
- 
-Figure 18: Comparison of the models based on their F1-score.
+![image](https://user-images.githubusercontent.com/95150377/200870191-e331177d-c7cb-426e-9bb6-f7ed5b9337c3.png)
+
 Eight variables, including the dependent variable, from Table 5 and Figures 15–18 was included in the classification procedure. All the models have an accuracy range of 50% to around 70%. When it comes to Accuracy, and F1-Score, DT has the highest value in shipment. The algorithms DT, SVM, and RF were all randomised to train all the data points and prevent overfitting the data, and all three appeared to produce some of the best results in terms of their Accuracy, Recall, and F1-Score, with RF having the highest Recall of 100% and a low Precision in shipment compared to the other models. Some metrics, including Recall and F1-Score, show that the performance of LR is quite good.
 Overall, the results demonstrate that the DT model performs best when compared to other algorithms since it learnt from the data very well and was able to accurately assess the test data in terms of accuracy and all other metrics. After pruning and boosting, the model dramatically increased in accuracy. The LR model is one that, although undergoing several trainings, did seem to learn or improve. All the LR models developed appeared to predict results similarly and with little to no change. This project used other kernels, including the linear kernel Vanilladot, the SVMLinear kernel, and the Gaussian radial basis kernel (rbfdot), to compare the predictions outcomes for SVM with respect to kernel parameters. Compared to the other kernels, the Gaussian radial basis produced significantly better results. When compared to the other models, KNN is the only model that didn't seem to learn very well from the data, recording poor values in nearly all the measures. KNN is found to be the poorest model in shipment.
 Another finding from this experiment was that adding a few of the removed variables to the selected variables didn't really seem to help the models; instead, their accuracy either declined significantly or stayed the same. These factors had no bearing at all on shipment and tended to lower the accuracy and other metrics of prediction.
