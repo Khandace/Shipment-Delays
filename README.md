@@ -22,37 +22,40 @@ The above table displays the different arrival percentages according to Mode, Wa
 Correlation Matrix
 ![image](https://user-images.githubusercontent.com/95150377/200858037-bfbbffcd-6338-4dcc-baaa-d717962f175b.png)
 
- 
-Figure 9: Correlogram showing the various correlations between the dependent variable and independent variable
 Most of the variables exhibit little to no association with each other or with the dependent variable. Price and Calls have the largest correlation in the above correlation matrix of 0.32, and they are moderately and positively associated. Discount and Weight have a moderate but negative correlation of -0.38, followed by Calls and Weight with -0.28. Weight is the only variable that has strong positive association with Arrival
  
-Figure 10: Spearman Correlation matrix using the correlation and distribution of dependent variables and independent variable
-The distribution of each variable is shown diagonally, and it is evident that most of the variables do not follow a normal distribution. Weight and Purchase have a slightly negative connection of -0.23, whereas Calls and Price have a significant positive correlation of 0.29, according to the association values displayed at the top of the diagonal. Arrival and Discount have a -0.34 and a 0.27 positive connection with Weight, respectively. While Mode and Warehouse do not substantially correlate with any of the other factors, Arrival does not strongly correlate with any of the other variables.
+ ![image](https://user-images.githubusercontent.com/95150377/200858381-201bd4fd-deb2-465e-bc9e-7fa53659e017.png)
 
-5.5.1. Internal Correlation
+The distribution of each variable is shown diagonally, and it is evident that most of the variables do not follow a normal distribution. Weight and Purchase have a slightly negative connection of -0.23, whereas Calls and Price have a significant positive correlation of 0.29, according to the association values displayed at the top of the diagonal. Arrival and Discount have a -0.34 and a 0.27 positive connection with Weight, respectively. While Mode and Warehouse do not substantially correlate with any of the other factors, Arrival does not strongly correlate with any of the other variables.
+Internal Correlation
+
 Internal correlation (IC) is a measure of dependency in a set of variables that includes canonical correlations, multiple correlations, and product moment correlations. (Joe and Mendoza, 2016). A relationship between the factors and the dependent variable is tested using the Spearman method prior to the internal correlation between independent variables. 
 The Spearman correlation coefficient (rho) has a positive and negative range. A coefficient of 1 denotes a perfect positive relationship of rankings, a value of -1 denotes a perfect negative association of ranks, and a coefficient of 0 denotes no correlation. The correlation between the rankings is less the closer the coefficient goes approaching 0.
 P-values vary from 0 to 100% or 1, and they indicate the possibility that a link exists is the result of chance. Your null hypothesis is valid if your p-value is close to 1, which denotes that there is no relationship that isn't due to chance.
- 
-Table 3: A table showing the selected variables after internal correlation
+
+![image](https://user-images.githubusercontent.com/95150377/200858606-d3f0fdf8-dd0f-401d-ac12-06c1924c7e06.png)
+
 Prior to performing internal correlation, the dependent variable is tested for correlation with each independent variable. As a result, factors like warehouse, mode rating, priority, and gender are eliminated because they have no correlation or significance with the dependent variable. It also showed that Discount has a moderate strong negative correlation (approximately -0.34) relative to the other variables, while Weight has a moderate strong positive correlation of about 0.27 with the dependent variable.
 From this the most significant variables with lower P-values were selected, giving as 5 factors which are Weight, Discount, Purchases, Prices, and Calls. The table below shows that majority of the variables are negatively correlated, have internal correlations, and have P-values that are considerably less than 0.05. A much stronger correlation and positive relationship between the factors are seen in the remaining three tests, all with P-values under 0.05.  Discount has a weak negative internal correlation with all the independent variables, yet it exhibits some level of significance with these variables, therefore it is deleted prior to partial correlation analysis, leaving only four variables.
-5.5.2. Partial Correlation
-Correlation and partial correlation are related ideas. It demonstrates the concept that just because two variables show a correlation does not mean that they are causally related. When two variables are conditional on one or more other factors, partial correlation measures the correlation between the two variables. This suggests that when there is a connection between two variables, the confounder (or controlling variable), a common cause of the misleading association, may contribute to the explanation of the correlation. This portion is removed, leaving only the partial correlation between the two variables (Zhang, 2021).
+
+Partial Correlation
+
 Partial correlation using Pearson as well as Spearman
-Pearson	                  Spearman
- 
-Table 4: Partial correlation of the variables using the Pearson and Spearson method
+![image](https://user-images.githubusercontent.com/95150377/200858933-4e1180a9-ade3-4e5d-a9a9-8a76b0671190.png)
+
 Arrival and Weight have a significant link; weight appears to be the key factor. This is not to argue that there is no correlation between the other variables, but the association between them and Weight is less. They only appear strong because of their connection to Weight.
 
-5.6. Factor Analysis
-To examine the underlying dimensions that explain the correlations between the various variables/items, factor analysis (FA) enables us to simplify a set of complex variables or items using statistical techniques(Tavakol and Wetzel, 2020). When the Kaiser-Meyer-Olkin (KMO) value is close to 1, it is typically assumed that the data are appropriate for factor analysis (FA), and when the value is below 0.5, it is assumed that the data are insufficient.
- 
-Box 3: This shows the sampling adequacy of the data for factor analysis
+Factor Analysis
+
+![image](https://user-images.githubusercontent.com/95150377/200859553-d7b3817a-f961-4cce-9f44-7b2ec4c3c6a5.png)
+ When the Kaiser-Meyer-Olkin (KMO) value is close to 1, it is typically assumed that the data are appropriate for factor analysis (FA), and when the value is below 0.5, it is assumed that the data are insufficient.
 Although the data's measure of sample adequacy (MSA) is relatively low and unimpressive, since factor analysis can be done with a KMO of 0.57 or higher, KMO values above 0.5 are typically acceptable. Therefore, the threshold for selecting components that made significant contributions is 0.6 since the MSA is 0.57.
-5.6.1. Screeplot 1
+
+Screeplot 1
   
-Figure 11:  The plots above show the eigenvalues of factors.
+![image](https://user-images.githubusercontent.com/95150377/200859811-b1ff159b-f406-473c-bc98-785e0953a462.png) ![image](https://user-images.githubusercontent.com/95150377/200859844-0f97a979-83a3-4498-bcb1-08891c13d4c2.png)
+
+
 The screeplot on the right demonstrates that factors 1 through 3 and maybe 4 make a major impact, whereas factors 4 and beyond may or may not make a meaningful contribution. The second plot shows that eight components have been explained in 80 percent and seems only 60% of for component have been explained.
  
 Box 4: The contributions of all the factors
