@@ -58,26 +58,32 @@ Screeplot 1
 
 The screeplot on the right demonstrates that factors 1 through 3 and maybe 4 make a major impact, whereas factors 4 and beyond may or may not make a meaningful contribution. The second plot shows that eight components have been explained in 80 percent and seems only 60% of for component have been explained.
  
-Box 4: The contributions of all the factors
+ ![image](https://user-images.githubusercontent.com/95150377/200866679-3bcb8738-8fb0-4dde-855d-48ddeb557e3e.png)
+
 Based on the criteria, the three variables Warehouse, Rating, and Purchases did not significantly influence any of the four components. These variables won't be used in the subsequent factor analysis. These three variables would be eliminated before running the second factor analysis.
-5.6.2. Screeplot 2: After First Factor Analysis
-  
-Figure 12:  The plots above show the principal components of the analysis
+
+Screeplot 2: After First Factor 
+![image](https://user-images.githubusercontent.com/95150377/200866826-08e6640e-c879-4740-9f50-fbe8192b614b.png) ![image](https://user-images.githubusercontent.com/95150377/200866847-4fb22716-2dba-46ae-803e-5185b353aba8.png)
+
 Like the first screeplot, the first four elements contribute the most, and the plot to the left shows that five of these components are explicable.
  
-Box 5: Contribution of all factors after weeding out warehouse, rating, and purchases
 Even though Priority's contribution (0.57, or around 0.6), seemed modest in contrast to other factors, it was found after deleting 3 variables and running a second factor analysis that all factors had significant contributions based on the threshold. It would be considered in future study, but it was almost at the threshold.
-5.7. Normalisation (Scaling)
- 
-Figure 13: Normalisation of all the independent variables using MinMax
+
+Normalisation (Scaling)
+
+![image](https://user-images.githubusercontent.com/95150377/200867107-800bfb40-0625-4039-a723-ca00a9c43d17.png)
+
 It is essential to scale the variables into the same range to increase the model's accuracy; this is done by excluding the dependent variable. As a result of normalisation, all variables are given the same weight to prevent any one variable from accidentally influencing the model's performance. The MinMax approach was used to scale the variables in the figure above, but the variables are not quite in the same range. As a result, a further normalisation using SoftMax will be performed to improve the model.
  
-Figure 14: Further normalisation of independent variables under model improvement using SoftMax
+![image](https://user-images.githubusercontent.com/95150377/200867232-71a87047-6aa5-43b9-ae78-ffe4bb799cb5.png)
+
 Although Discount has many outliers and does not exactly seem to be in range with the others, the second normalisation scales practically all the variables into the same range. 
-CHAPTER 6
-6.1. Model Building
+
+
+MODEL BUILDING
 After being normalised, the final variables from the factor analysis are applied to each technique and used to generate each model during the model-building phase.
-6.1.1. K-Nearest Neighbour
+
+K-Nearest Neighbour
 
 Model
 Arrival_test_pred <- knn(train = Arrival_train, test = Arrival_test, cl = Arrival_train_labels, k=23)
@@ -85,19 +91,12 @@ CrossTable(x = Arrival_test_labels, y = Arrival_test_pred, prop.chisq=FALSE)
 
 Model Performance 
  
-  
+![image](https://user-images.githubusercontent.com/95150377/200867687-cdf68cea-1bf2-482e-8ee0-6d1f7db4c9ec.png) ![image](https://user-images.githubusercontent.com/95150377/200867729-d4900018-a6c5-42a7-82dd-e4608752ca03.png)
 
-
-
-Box 6: The cross table and confusion matrix and statistics of the best K-NN model.
 After experimenting with several various values of k and applying both the MinMax and SoftMax normalisation techniques, the best model was produced utilising the value of k is equal to 23 and the SoftMax normalisation. Most of the trails' sensitivity and accuracy scores were under 0.51. This model predicted 792 Arrivals, which is much more than the other estimates and consistent with the project's goal of increasing the percentage of on-time deliveries.
 
 
-
-
-
-
-6.1.2. Support Vector Machine (SVM)
+Support Vector Machine (SVM)
 
 Model
 set.seed(12345)
@@ -106,24 +105,12 @@ svm1 <- ksvm(Arrival ~ ., data = ship1.tr, kernel = "rbfdot", type = "C-svc")
 
 Model Performance
  
-  
+![image](https://user-images.githubusercontent.com/95150377/200867848-b45564ed-31f9-444b-8f6e-440b2e1ecf58.png) ![image](https://user-images.githubusercontent.com/95150377/200867887-648f4cde-6e29-4d06-8fdf-e851764aa94d.png)
 
-
-
-
-Box 7: The cross table and confusion matrix and statistics of the best SVM model
 The goal is defeated because none of the SVM algorithms used to perform the analysis projected large False Negative, which means that deliveries were not provided on schedule. Even though it was slightly below the False Negative, the SVM model with the rbfdot kernel was the one that correctly predicted a considerable proportion of True Positives indicating early arrival of products.
 
 
-
-
-
-
-
-
-
-
-6.1.3. Logistic Regression
+Logistic Regression
 
 Model
 # Run final model with highest correlating variable
@@ -134,24 +121,13 @@ exp(cbind(OR = coef(mylogit3), confint(mylogit3)))
 
 Model Performance
  
+![image](https://user-images.githubusercontent.com/95150377/200868067-1087dd26-ae13-4d29-b16e-258c392a4615.png) ![image](https://user-images.githubusercontent.com/95150377/200868143-5d9217c1-db52-4491-96f6-3ddf4c81c9ff.png)
 
 
-
-
-
-
-
-Box 8: The cross table and confusion matrix and statistics of the best LR model
 After running at least two LR models, all the models produced outcomes that were quite close to one another. The cross- table predicts are reasonable because they show that most deliveries were completed on time, with relatively few failing to do so.
 
 
-
-
-
-
-
-
-6.1.4. Decision Tree
+Decision Tree
 
 Model
 ship1_boost100 <- C5.0(ship1_train[-8], ship1_train$Arrival, control = C5.0Control(minCases = 9), trials = 100)
@@ -159,13 +135,9 @@ ship1_boost100
 
 Model Performance
  
+![image](https://user-images.githubusercontent.com/95150377/200868270-829fb0ef-1dbf-4ba8-9759-a1e4985564ed.png) ![image](https://user-images.githubusercontent.com/95150377/200868330-70d04054-117f-40a1-bad3-043e79b20975.png)
 
 
-
-
-
-
-Box 9: The cross table and confusion matrix and statistics of the best DT model
 After executing multiple model upgrades by pruning and boosting, the model with the best accuracy and sensitivity among all the models so far was created by boosting the model with 100 trails. Furthermore, it predicted a high rate of delivery on time.
 
 
