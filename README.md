@@ -2,7 +2,7 @@
 
 # DATA EXPLORATION
 
-# Performance Dashboard
+Performance Dashboard
 
 ![image](https://user-images.githubusercontent.com/95150377/200857199-998eccb0-336c-49e6-b2ac-f85caa4e9439.png)
  
